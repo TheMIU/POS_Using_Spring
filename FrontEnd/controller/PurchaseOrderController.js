@@ -9,7 +9,7 @@ getOrderDB();
 // get customer json data from CustomerServletAPI
 function getCustomerDB() {
     $.ajax({
-        url: 'http://localhost:8080/app/pages/customer',
+        url: 'http://localhost:8080/pos/customer',
         dataType: "json",
         method: "GET",
         async: false,
@@ -25,7 +25,7 @@ function getCustomerDB() {
 
 function getItemDB() {
     $.ajax({
-        url: 'http://localhost:8080/app/pages/item',
+        url: 'http://localhost:8080/pos/item',
         dataType: "json",
         method: "GET",
         async: false,
@@ -41,7 +41,7 @@ function getItemDB() {
 
 function getOrderDB() {
     $.ajax({
-        url: 'http://localhost:8080/app/pages/orders',
+        url: 'http://localhost:8080/pos/orders',
         dataType: "json",
         method: "GET",
         async: false,
@@ -403,7 +403,7 @@ function placeOrder() {
 
     //  send order object to save in server
     $.ajax({
-        url: 'http://localhost:8080/app/pages/purchase-order',
+        url: 'http://localhost:8080/pos/',
         method: 'POST',
         contentType: "application/json",
         data: JSON.stringify(order),

@@ -1,4 +1,4 @@
-let baseUrl = 'http://localhost:8080/app/pages/';
+let baseUrl = 'http://localhost:8080/pos/';
 
 getAllItems();
 bindRowClickEvents()

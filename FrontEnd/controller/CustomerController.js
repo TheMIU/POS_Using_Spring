@@ -1,4 +1,4 @@
-let baseUrl = 'http://localhost:8080/app/pages/';
+let baseUrl = 'http://localhost:8080/pos/';
 
 getAllCustomers();
 bindRowClickEvents();
@@ -83,7 +83,7 @@ $("#btnCusDelete").click(function () {
     let b = confirm("Do you want to Delete " + id + " ?");
     if (b) {
         $.ajax({
-            url: baseUrl + 'customer?cusID=' + id,
+            url: baseUrl + 'customer?id=' + id,
             method: 'DELETE',
 
             success: function (res) {
@@ -104,9 +104,9 @@ $("#btnUpdate").click(function () {
     let address = $('#txtCustomerAddress').val();
 
     let customer = {
-        "cusID": id,
-        "cusName": name,
-        "cusAddress": address
+        "id": id,
+        "name": name,
+        "address": address
     }
 
     let b = confirm("Do you want to Update " + id + " ?");

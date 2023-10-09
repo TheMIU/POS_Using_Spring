@@ -23,16 +23,19 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void addCustomer(CustomerDTO dto) {
+        if (repo.existsById(dto.getId())) throw new RuntimeException("Error, " + dto.getId() + " is already added!");
         repo.save(mapper.map(dto, Customer.class));
     }
 
     @Override
     public void updateCustomer(CustomerDTO dto) {
+        if (!repo.existsById(dto.getId())) throw new RuntimeException("Error, customer is not exists!");
         repo.save(mapper.map(dto, Customer.class));
     }
 
     @Override
     public void deleteCustomer(String id) {
+        if (!repo.existsById(id)) throw new RuntimeException("Error, customer is not exists!");
         repo.deleteById(id);
     }
 
@@ -45,6 +48,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO findCustomer(String id) {
+        if (!repo.existsById(id)) throw new RuntimeException("Error, customer is not exists!");
         return mapper.map(repo.findById(id), CustomerDTO.class);
     }
 }

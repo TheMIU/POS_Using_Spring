@@ -24,7 +24,7 @@ public class JPAConfig {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setDataSource(ds);
         factory.setJpaVendorAdapter(vad);
-        factory.setPackagesToScan("lk.ijse.spring.entity"); // set entity locations
+        factory.setPackagesToScan("lk.ijse.spring.pos.entity"); // set entity locations
         return factory;
     }
 
@@ -34,7 +34,7 @@ public class JPAConfig {
         ds.setUsername("root");
         ds.setPassword("1234");
         ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/d2?createDatabaseIfNotExist=true");
+        ds.setUrl("jdbc:mysql://localhost:3306/spring_pos?createDatabaseIfNotExist=true");
         return ds;
     }
 

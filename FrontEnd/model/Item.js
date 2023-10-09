@@ -1,6 +1,6 @@
 let item={
     code:"",
-    itemName:"",
+    description:"",
     qtyOnHand:0,
     unitPrice:0
 }

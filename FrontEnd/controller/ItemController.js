@@ -21,10 +21,10 @@ function getAllItems() {
             for (let i in items) {
                 let item = items[i];
                 let code = item.code;
-                let name = item.itemName;
-                let qtyOnHand = item.qty;
+                let description = item.description;
+                let qtyOnHand = item.qtyOnHand;
                 let unitPrice = item.unitPrice;
-                let row = `<tr><td>${code}</td><td>${name}</td><td>${qtyOnHand}</td><td>${unitPrice}</td></tr>`;
+                let row = `<tr><td>${code}</td><td>${description}</td><td>${qtyOnHand}</td><td>${unitPrice}</td></tr>`;
                 $("#tblItem").append(row);
             }
             setTextFields("", "", "", "");
@@ -40,18 +40,18 @@ function getAllItems() {
 function bindRowClickEvents() {
     $('#tblItem').on('click', 'tr', function () {
         let code = $(this).find('td:eq(0)').text();
-        let name = $(this).find('td:eq(1)').text();
+        let description = $(this).find('td:eq(1)').text();
         let qtyOnHand = $(this).find('td:eq(2)').text();
         let unitPrice = $(this).find('td:eq(3)').text();
 
-        setTextFields(code, name, qtyOnHand, unitPrice);
+        setTextFields(code, description, qtyOnHand, unitPrice);
     });
 }
 
 // set text fields
-function setTextFields(code, name, qtyOnHand, unitPrice) {
+function setTextFields(code, description, qtyOnHand, unitPrice) {
     $('#itemCode').val(code);
-    $('#itemName').val(name);
+    $('#itemName').val(description);
     $('#itemQty').val(qtyOnHand);
     $('#itemPrice').val(unitPrice);
 }
@@ -104,14 +104,14 @@ $("#btnItemDelete").click(function () {
 // update
 $("#btnItemUpdate").click(function () {
     let code = $('#itemCode').val();
-    let itemName = $('#itemName').val();
-    let qty = $('#itemQty').val();
+    let description = $('#itemName').val();
+    let qtyOnHand = $('#itemQty').val();
     let unitPrice = $('#itemPrice').val();
 
     let item = {
         "code": code,
-        "itemName": itemName,
-        "qty": qty,
+        "description": description,
+        "qtyOnHand": qtyOnHand,
         "unitPrice": unitPrice
     }
 

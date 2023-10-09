@@ -14,9 +14,7 @@ function getAllCustomers() {
         url: baseUrl + 'customer',
         dataType: "json",
         method: "GET",
-        headers: {
-            Auth: 'user=admin,pass=1234'
-        },
+
         success: function (response) {
             let customers = response.data;
 
@@ -66,9 +64,7 @@ $("#btnCustomer").click(function () {
     $.ajax({
         url: baseUrl + 'customer',
         method: "POST",
-        headers: {
-            Auth: "user=admin,pass=1234"
-        },
+
         data: formData,
         success: function (res) {
             alert(res.message);
@@ -89,9 +85,6 @@ $("#btnCusDelete").click(function () {
         $.ajax({
             url: baseUrl + 'customer?cusID=' + id,
             method: 'DELETE',
-            headers: {
-                Auth: "user=admin,pass=1234"
-            },
 
             success: function (res) {
                 alert(res.message);
@@ -123,9 +116,6 @@ $("#btnUpdate").click(function () {
             url: baseUrl + 'customer',
             method: 'PUT',
             contentType: "application/json",
-            headers: {
-                Auth: "user=admin,pass=1234"
-            },
             data: JSON.stringify(customer),
 
             success: function (res) {

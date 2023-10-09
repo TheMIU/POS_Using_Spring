@@ -12,9 +12,6 @@ function getCustomerDB() {
         url: 'http://localhost:8080/app/pages/customer',
         dataType: "json",
         method: "GET",
-        headers: {
-            Auth: 'user=admin,pass=1234'
-        },
         async: false,
         success: function (resp) {
             customerDB = resp.data;
@@ -31,9 +28,6 @@ function getItemDB() {
         url: 'http://localhost:8080/app/pages/item',
         dataType: "json",
         method: "GET",
-        headers: {
-            Auth: 'user=admin,pass=1234'
-        },
         async: false,
         success: function (resp) {
             itemDB = resp.data;
@@ -50,9 +44,6 @@ function getOrderDB() {
         url: 'http://localhost:8080/app/pages/orders',
         dataType: "json",
         method: "GET",
-        headers: {
-            Auth: 'user=admin,pass=1234'
-        },
         async: false,
         success: function (resp) {
             orderDB = resp.data;
@@ -416,9 +407,6 @@ function placeOrder() {
         method: 'POST',
         contentType: "application/json",
         data: JSON.stringify(order),
-        headers: {
-            Auth: 'user=admin,pass=1234'
-        },
         async:false,
 
         success: function (res) {

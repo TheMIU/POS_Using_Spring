@@ -15,7 +15,7 @@ function getAllOrders() {
 
             for (let i in orders) {
                 let order = orders[i];
-                let orderId = order.orderID;
+                let orderId = order.oid;
                 let date = order.date;
                 let customerId = order.customerID;
                 let itemsIDs = order.itemsIDs;

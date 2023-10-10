@@ -11,14 +11,21 @@ function getAllOrders() {
         method: 'GET',
 
         success: function (response) {
+            console.log(response)
             let orders = response.data;
+            console.log(orders[0].orderDetails)
 
             for (let i in orders) {
                 let order = orders[i];
                 let orderId = order.oid;
                 let date = order.date;
-                let customerId = order.customerID;
-                let itemsIDs = order.itemsIDs;
+                let customerId = order.cusID;
+
+                let details;
+                for(let x in order.orderDetails){
+                    details += order.orderDetails[x];
+                }
+                let itemsIDs = details;
                 let discount = order.discount;
                 let total = order.total;
 

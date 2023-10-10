@@ -64,7 +64,7 @@ function getLastOrderID() {
     getOrderDB();
 
     if (orderDB.length > 0) {
-        return orderDB[orderDB.length - 1].orderID;
+        return orderDB[orderDB.length - 1].oid;
     } else {
         return 'O00-001'; // Return if the orderDB is empty
     }
@@ -168,9 +168,9 @@ selectCodeElement.addEventListener("change", function () {
     });
 
     if (selectedItem) {
-        $('#txtItemName').val(selectedItem.itemName);
+        $('#txtItemName').val(selectedItem.description);
         $('#txtItemPrice').val(selectedItem.unitPrice);
-        $('#txtQTYOnHand').val(selectedItem.qty);
+        $('#txtQTYOnHand').val(selectedItem.qtyOnHand);
 
     } else {
         $('#txtItemName').val("");
@@ -380,8 +380,10 @@ function placeOrder() {
         let item = itemDB.find(item => item.code === itemCode);
         if (item) {
             cart2.push({
-                item: item,
-                qty: quantity
+                'oid': orderID,
+                'itemCode': itemCode,
+                'qty': quantity,
+                'unitPrice': item.unitPrice
             });
         }
     });
@@ -390,24 +392,30 @@ function placeOrder() {
     let customer = customerDB.find(customer => customer.id === customerID);
 
     // Create the new order object
-    let order = {
+    /*let order = {
         'orderID': orderID,
         'date': date.toString(),
         'customer': customer,
         'cart': cart2,
         'discount': discount.toString(),
         'total': total.toString()
+    };*/
+    let order = {
+        'oid': orderID,
+        'date': date.toString(),
+        'cusID': customer.id,
+        'orderDetails': cart2
     };
 
     console.log(order);
 
     //  send order object to save in server
     $.ajax({
-        url: 'http://localhost:8080/pos/',
+        url: 'http://localhost:8080/pos/purchase',
         method: 'POST',
         contentType: "application/json",
         data: JSON.stringify(order),
-        async:false,
+        async: false,
 
         success: function (res) {
             alert(res.message);
